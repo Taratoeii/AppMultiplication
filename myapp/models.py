@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class Numbercal(models.Model):
+    Number_text = models.CharField(max_length=1)
+    
+    def __str__(self):
+        return self.Number_text

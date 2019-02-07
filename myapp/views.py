@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def Cal(request, id):
+    id = str(id) + str(id) + str(id)
+    return HttpResponse(id)
