@@ -1,3 +1,14 @@
-{% for i in Number.objects.all %}
-    <li>{{i}} -- {{i.count}} count{{ i.count|pluralize }}</li></li>
+Many Count {{number}} is : {{keep}}
+<br>
+<br>
+
+{% for i in list_num %}
+    <a>{{get_num}} * {{forloop.counter}} = {{i}}</a>
+    <br>
 {% endfor %}
+
+
+
+
+
+

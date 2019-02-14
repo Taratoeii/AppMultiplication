@@ -1,7 +1,7 @@
 <form action= "{% url 'app:keep' %}" method="post">
     {% csrf_token %}
     Input Number :
-    <input type="text" name="number"  id = number{{forloop.counter}} value="{{ number.id }}">
+    <input type="text" name="number">
     <br>
     <br>
     <input type="submit" value="submit">

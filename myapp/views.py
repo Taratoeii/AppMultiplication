@@ -1,8 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404,render
 from .models import Number
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 
 def Show(request, id):
     # id = str(id) + str(id) + str(id)
@@ -27,12 +25,26 @@ def mul(request):
     return render(request, 'Mul.html', context)
 
 def keep(request):
-    keepnum = Number.objects.get(id=request.POST['number'])
-    keepnum.count += 1
-    keepnum.save()
+    get_num = request.POST['number']
+    list_num = []
+    for i in range(1,13):
+        num = int(get_num) * i
+        list_num.append(num)
+    try: 
+        keep_num = Number.objects.get(Number_text=request.POST['number'])
+    except (KeyError, Number.DoesNotExist):
+        keep_num = Number(Number_text=request.POST['number'])
+        keep_num.save()
+    else:
+        keep_num.count += 1
+        keep_num.save()
+    
     context = {
-        'id' : request.POST['number'] ,
+        'get_num': request.POST['number'],
+        'list_num': list_num,
+        'keep': keep_num.count
     }
-    return HttpResponseRedirect(reverse('app:keep'))
+    return render(request, 'keep.html', context)
+
 
 

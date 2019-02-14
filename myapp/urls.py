@@ -5,5 +5,5 @@ urlpatterns = [
     path('<int:id>/', views.Show, name='Show'),
     path('', views.InputNum, name='InputNum'),
     path('mul/', views.mul, name='mul'),
-    path('keep/', views.keep, name='keep')
+    path('keep/', views.keep, name='keep'),
 ]
