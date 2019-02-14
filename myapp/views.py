@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.shortcuts import get_object_or_404, render
+from .models import Number
 
 def Show(request, id):
     # id = str(id) + str(id) + str(id)
@@ -25,13 +25,13 @@ def mul(request):
     return render(request, 'Mul.html', context)
 
 def keep(request):
-    listnum = []
-    for i in range(1,13):
-        listnum.append(i)
+    keepnum = Number.objects.get(id=request.POST['number'])
+    keepnum.count += 1
+    keepnum.save()
     context = {
         'id' : request.POST['number'] ,
-        'num' : listnum
     }
+
     return render(request, 'keep.html', context)
 
 

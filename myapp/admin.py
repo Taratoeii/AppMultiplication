@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Numbercal
+from .models import Number
 
-admin.site.register(Numbercal)
+admin.site.register(Number)
