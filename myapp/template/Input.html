@@ -1,0 +1,11 @@
+<form action= "{% url 'app:keep' %}" method="post">
+    {% csrf_token %}
+    Input Number :
+    <input type="text" name="number"  id = number{{forloop.counter}}>
+    <br>
+    <br>
+    <input type="submit" value="submit">
+</form>
+
+
+
