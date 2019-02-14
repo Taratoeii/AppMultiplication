@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Number
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def Show(request, id):
     # id = str(id) + str(id) + str(id)
@@ -31,7 +33,6 @@ def keep(request):
     context = {
         'id' : request.POST['number'] ,
     }
-
-    return render(request, 'keep.html', context)
+    return HttpResponseRedirect(reverse('app:keep'))
 
 
